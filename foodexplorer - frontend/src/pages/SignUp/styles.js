@@ -11,6 +11,12 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     display: flex;
     margin-bottom:4rem;
+
+    background: linear-gradient(45deg, red, violet, indigo, blue, green, yellow, orange, red);
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-size: 200% 100%;
+    animation: rainbowText 8s linear 2s infinite;
     
     >svg {
       font-size: 4.3rem;
@@ -46,6 +52,8 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+
+  animation: topdown 400ms ease 50ms backwards;
 
   h2 {
     display: none;

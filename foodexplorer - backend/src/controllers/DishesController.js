@@ -94,9 +94,15 @@ class DishesController {
   }
 
   async delete(request, response) {
-    const { id } = request.params
+    const { id, image } = request.query
+    const DiskStorage = require("../providers/DiskStorage")
+    const diskStorage = new DiskStorage()
 
     await knex("dishes").where({ id }).delete()
+
+    if (image) {
+      await diskStorage.deleteFile(image)
+    }
 
     return response.json()
   }

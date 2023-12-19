@@ -6,7 +6,6 @@ export const AuthContext = createContext({})
 function AuthProvider({ children }) {
   const [data, setData] = useState({})
   const [isMenuClosed, setIsMenuClosed] = useState(true)
-  const [search, setSearch] = useState("")
   const [favorites, setFavorites] = useState([])
   const [cart, setCart] = useState([])
 
@@ -67,7 +66,7 @@ function AuthProvider({ children }) {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ signIn, signOut, user: data.user, isMenuClosed, setIsMenuClosed, search, setSearch, favorites, setFavorites, cart, setCart }}>
+    <AuthContext.Provider value={{ signIn, signOut, user: data.user, isMenuClosed, setIsMenuClosed, favorites, setFavorites, cart, setCart }}>
       {children}
     </AuthContext.Provider>
   )

@@ -11,11 +11,13 @@ import { Footer } from "../../components/Footer"
 import { api } from "../../services/api"
 
 export function Favorites() {
-  const { isMenuClosed, search, favorites } = useAuth()
+  const { isMenuClosed, favorites } = useAuth()
 
+  const [search, setSearch] = useState("")
   const [data, setData] = useState([])
 
   useEffect(() => {
+
     async function fetchFavorites() {
       if (favorites.length > 0) {
         const response = await api.get(`/dishes?name=${search}&favorites=${favorites.join(",")}`)
@@ -33,7 +35,7 @@ export function Favorites() {
 
     <Container>
 
-      <Header />
+      <Header setSearch={setSearch}/>
 
       {isMenuClosed &&
 

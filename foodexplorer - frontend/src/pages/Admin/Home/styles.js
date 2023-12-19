@@ -5,6 +5,10 @@ export const Container = styled.div`
   height: 100vh;
   margin: 0 auto;
 
+  >.set-animation {
+    animation: topdown 400ms ease 50ms backwards;
+  }
+
   @media (min-width: ${({ theme }) => theme.MEDIA.SIZE}) {
     max-width: 100%;
   }

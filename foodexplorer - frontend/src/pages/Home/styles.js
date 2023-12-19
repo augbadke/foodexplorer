@@ -9,6 +9,10 @@ export const Container = styled.div`
     display: none;
   }
 
+  >.set-animation {
+    animation: topdown 400ms ease 50ms backwards;
+  }
+
   @media (min-width: ${({ theme }) => theme.MEDIA.SIZE}) {
     max-width: 100%;
   }

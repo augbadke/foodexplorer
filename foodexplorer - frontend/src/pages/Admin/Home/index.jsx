@@ -15,7 +15,8 @@ import { Footer } from "../../../components/Footer"
 import { api } from "../../../services/api"
 
 export function Home() {
-  const { isMenuClosed, search } = useAuth()
+  const { isMenuClosed } = useAuth()
+  const [search, setSearch] = useState("")
   const [meals, setMeals] = useState([])
   const [desserts, setDesserts] = useState([])
   const [drinks, setDrinks] = useState([])
@@ -34,9 +35,9 @@ export function Home() {
   return (
     <Container>
 
-      <Header />
+      <Header setSearch={setSearch}/>
 
-      {isMenuClosed && <div>
+      {isMenuClosed && <div className="set-animation">
         <Group>
           <img className="small" src={decorationSmall} />
           <img className="big" src={decorationBig} />
@@ -61,7 +62,6 @@ export function Home() {
               <Dishes
                 key={String(dessert.id)}
                 data={dessert}
-              // onClick={()=>handleDetails(dessert.id)}
               />
             ))
           }
@@ -73,7 +73,6 @@ export function Home() {
               <Dishes
                 key={String(drink.id)}
                 data={drink}
-              // onClick={()=>handleDetails(drink.id)}
               />
             ))
           }

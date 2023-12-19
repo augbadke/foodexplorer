@@ -32,14 +32,26 @@ export function New() {
   const [newTag, setNewTag] = useState("")
   const [imageFile, setImageFile] = useState(null)
   const [image, setImage] = useState(null)
+  const [imageName, setImageName] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
   const [inputStyle, setInputStyle] = useState({ width: `6.8rem` })
+  const [loading, setLoading] = useState(false)
 
-  function handleChange(e) {
+  const { isMenuClosed } = useAuth()
+
+  function handleTagChange(e) {
     setNewTag(e.target.value)
     setInputStyle({ width: `${(newTag.length + 1) / 1.15}rem` })
-    if (newTag.length <= 1) {
-      setInputStyle({ width: `6.8rem` })
+
+    if (e.key === 'Enter') {
+      handleAddTag(e)
+    }
+  }
+
+  function addTagOnPressEnter(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      handleAddTag(e)
     }
   }
 
@@ -89,7 +101,8 @@ export function New() {
     }
   }
 
-  async function handleNewDish() {
+  async function handleNewDish(e) {
+    e.preventDefault()
     if (!name) {
       return alert("Digite o nome do ítem que será adocionado ao cardápio!")
     }
@@ -104,6 +117,8 @@ export function New() {
       return alert("O preço inserido não é um número válido!")
     }
 
+    setLoading(true)
+
     const requestBody = {
       name,
       category,
@@ -112,7 +127,11 @@ export function New() {
       tags,
     }
 
-    const response = await api.post("/dishes", requestBody)
+    const response = await api.post("/dishes", requestBody).then(()=>{
+      setLoading(false)
+    }).catch(()=>{
+      setLoading(false)
+    })
 
     const dish_id = response.data
 
@@ -124,9 +143,11 @@ export function New() {
     }
 
     alert("Novo ítem do cardápio criado com sucesso!")
+    navigate("/")
   }
 
-  async function handleUpdateDish() {
+  async function handleUpdateDish(e) {
+    e.preventDefault()
     if (!name) {
       return alert("Digite o nome do ítem que será adocionado ao cardápio!")
     }
@@ -140,6 +161,8 @@ export function New() {
     if (isNaN(price)) {
       return alert("O preço inserido não é um número válido!")
     }
+
+    setLoading(true)
 
     const requestBody = {
       name,
@@ -154,7 +177,11 @@ export function New() {
       requestBody.tags = tags
     }
 
-    await api.put(`/dishes/${params.id}`, requestBody)
+    await api.put(`/dishes/${params.id}`, requestBody).then(()=>{
+      setLoading(false)
+    }).catch(()=>{
+      setLoading(false)
+    })
 
     if (imageFile) {
       const fileUploadForm = new FormData()
@@ -164,17 +191,27 @@ export function New() {
     }
 
     alert("Cardápio atualizado com sucesso!")
+    navigate("/")
   }
 
   async function handleDeleteDish() {
     const confirm = window.confirm("O ítem será excluído do cardápio, realmente deseja continuar?")
     if (confirm) {
-      await api.delete(`/dishes/${params.id}`)
+      setLoading(true)
+      await api.delete(`/dishes/?id=${params.id}&image=${imageName}`).then(()=>{
+        setLoading(false)
+      }).catch(()=>{
+        setLoading(false)
+      })
       navigate("/")
     }
   }
 
-  const { isMenuClosed } = useAuth()
+  function removeDefault(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+    }
+  }
 
   useEffect(() => {
     async function fetchDish() {
@@ -189,6 +226,7 @@ export function New() {
       if (response.data.image) {
         const ImageUrl = `${api.defaults.baseURL}/files/${response.data.image}`
         setImage(ImageUrl)
+        setImageName(response.data.image)
       }
     }
     if (paramsExist) {
@@ -212,7 +250,7 @@ export function New() {
         <button type="button" onClick={handleBack}><PiCaretLeft />voltar</button>
       </div>
 
-      {isMenuClosed && <Form>
+      {isMenuClosed && <Form onSubmit={paramsExist ? handleUpdateDish : handleNewDish} onKeyDown={removeDefault}>
         {paramsExist ? <h1>Editar prato</h1> : <h1>Novo prato</h1>}
 
         <div className="align">
@@ -223,6 +261,7 @@ export function New() {
             <input
               id="image"
               type="file"
+              accept="image/*"
               onChange={handleChangeImage}
             />
             {isOpen && <div className="preview"><VscChromeClose onClick={handlePreview} /><img src={image} alt='Imagem do ítem' /></div>}
@@ -267,9 +306,11 @@ export function New() {
                 <input
                   type="text"
                   placeholder="Adicionar"
-                  onChange={handleChange}
+                  onKeyDown={addTagOnPressEnter}
+                  onChange={handleTagChange}
                   style={inputStyle}
                   value={newTag}
+                  autoComplete="off"
                   id="newTag"
                 />
                 <button onClick={(e) => handleAddTag(e)}><FiPlus /></button>
@@ -300,8 +341,8 @@ export function New() {
         </div>
 
         <div className="formBtnAlign">
-          {paramsExist ? <Button className="deleteDish" onClick={handleDeleteDish} title="Excluir prato" /> : null}
-          <Button className={paramsExist ? "" : "wide"} onClick={paramsExist ? handleUpdateDish : handleNewDish} title="Salvar alterações" />
+          {paramsExist ? <Button className="deleteDish" onClick={handleDeleteDish} disabled={loading} title={loading ? "Carregando..." : "Excluir prato"} /> : null}
+          <input  className={paramsExist ? "" : "wide"} type="submit" disabled={loading} value={loading ? "Carregando..." : "Salvar alterações"} />
         </div>
       </Form>}
 

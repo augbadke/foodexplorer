@@ -15,7 +15,9 @@ import { Footer } from "../../components/Footer"
 import { api } from "../../services/api"
 
 export function Home() {
-  const { isMenuClosed, search } = useAuth()
+  const { isMenuClosed } = useAuth()
+
+  const [search, setSearch] = useState("")
   const [meals, setMeals] = useState([])
   const [desserts, setDesserts] = useState([])
   const [drinks, setDrinks] = useState([])
@@ -23,20 +25,22 @@ export function Home() {
   useEffect(() => {
     async function fetchDishes() {
       const response = await api.get(`/dishes?name=${search}`)
-      setMeals(response.data.filter(options => options.category === "Refeição"))
-      setDesserts(response.data.filter(options => options.category === "Sobremesa"))
-      setDrinks(response.data.filter(options => options.category === "Bebida"))
+      setMeals(response.data.filter(items => items.category === "Refeição"))
+      setDesserts(response.data.filter(items => items.category === "Sobremesa"))
+      setDrinks(response.data.filter(items => items.category === "Bebida"))
+
     }
 
     fetchDishes()
-  }, [search]) //aqui o useEffect é executado somente uma vez quando o componente é renderizado
+
+  }, [search])
 
   return (
     <Container>
 
-      <Header />
+      <Header setSearch={setSearch} />
 
-      {isMenuClosed && <div>
+      {isMenuClosed && <div className="set-animation">
 
         <Group>
           <img className="small" src={decorationSmall} />
@@ -81,7 +85,7 @@ export function Home() {
       </div>}
 
       <Footer />
-      
+
     </Container>
   )
 }

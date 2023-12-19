@@ -58,6 +58,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   padding: 0 3.2rem;
+  animation: topdown 400ms ease 50ms backwards;
 
   .formBtnAlign {
     display: flex;
@@ -65,10 +66,17 @@ export const Form = styled.form`
     margin-top: 2.8rem;
     margin-bottom: 5.3rem;
     
-    >button {
+    >input {
       width: 50%;
+      border: none;
+      border-radius: .5rem;
+      padding: 1.3rem 0;
       background: ${({ theme }) => theme.COLORS.TOMATO_400};
       white-space: nowrap;
+
+      font-family: "Poppins", sans-serif;
+      font-size: 1.4rem;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
     }
 
     .wide {
@@ -121,8 +129,8 @@ export const Form = styled.form`
 
   .preview-btn {
     position: absolute;
-    top: 3.2rem;
-    right: 7rem;
+    top: 2.45rem;
+    left: 14rem;
     font-size: 1.9rem;
 
     cursor: pointer;
@@ -235,7 +243,7 @@ export const Form = styled.form`
       justify-content: right;
       margin-bottom: 5.3rem;
 
-      >button {
+      >input {
           width: 17.2rem;
       }
 
@@ -256,6 +264,11 @@ export const Form = styled.form`
       width: 22.9rem;
       grid-area: A;
       white-space: nowrap;
+    }
+
+    .preview-btn {
+      top: 3.2rem;
+      right: 7rem;
     }
 
     .name {

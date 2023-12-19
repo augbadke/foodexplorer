@@ -50,7 +50,8 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 3.6rem clamp(2rem,60vw - 20.5rem,5rem);;  
+  padding: 3.6rem clamp(2rem,60vw - 20.5rem,5rem);
+  animation: topdown 400ms ease 50ms backwards;
 
   >img {
     width: 26.4rem;

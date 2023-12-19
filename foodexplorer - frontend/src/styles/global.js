@@ -43,4 +43,33 @@ export default createGlobalStyle`
   a:hover, button:hover {
     filter: brightness(0.9);
   }
+
+  @keyframes rainbowText {
+    0% {
+      background-position: 100% 0;
+    }
+
+    15% {
+      background-position: 0% 0;
+      color: transparent;
+    }
+
+    30% {
+      background-position: -100% 0;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    }
+  }
+
+  @keyframes topdown {
+    0% {
+      opacity: 0;
+      transform: translateY(-25px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+
+    }
+  }
 `

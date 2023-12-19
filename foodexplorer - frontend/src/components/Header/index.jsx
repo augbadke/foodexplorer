@@ -11,8 +11,8 @@ import { useAuth } from "../../hooks/auth"
 
 import { Input } from "../Input"
 
-export function Header() {
-  const { signOut, isMenuClosed, setIsMenuClosed, setSearch, cart } = useAuth()
+export function Header({setSearch}) {
+  const { signOut, isMenuClosed, setIsMenuClosed, cart } = useAuth()
 
   const total = cart.reduce((acc, item) => acc + item.quantity, 0)
 
@@ -56,7 +56,7 @@ export function Header() {
           <Input
             icon={PiMagnifyingGlassLight}
             placeholder="Busque por pratos ou ingredientes"
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={e => { setSearch && setSearch(e.target.value) }}
           />
         </Search>
 
@@ -88,7 +88,7 @@ export function Header() {
           <Input
             icon={PiMagnifyingGlassLight}
             placeholder="Busque por pratos ou ingredientes"
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={e => { setSearch && setSearch(e.target.value) }}
           />
         </MenuSearch>
 

@@ -12,17 +12,27 @@ import { Button } from "../../components/Button"
 export function SignIn() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const { signIn } = useAuth()
 
   function handleSignIn() {
-    signIn({ email, password })
+    setLoading(true)
+    signIn({ email, password }).then(() => {
+      setLoading(false)
+    })
+  }
+
+  function singInOnPressEnter(e) {
+    if (e.key === 'Enter') {
+      signIn({ email, password })
+    }
   }
 
   return (
     <Container>
       <h1><BsFillHexagonFill />food explorer</h1>
-      <Form>
+      <Form onKeyDown={singInOnPressEnter}>
         <h2>Faça login</h2>
         <Input title="E-mail"
           idname="email"
@@ -38,7 +48,11 @@ export function SignIn() {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <Button title="Entrar" onClick={handleSignIn} />
+        <Button 
+          title={loading ? "Carregando..." : "Entrar"}
+          onClick={handleSignIn}
+          disabled={loading} 
+        />
 
         <Link to="/register">Criar uma conta</Link>
 

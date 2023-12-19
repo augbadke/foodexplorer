@@ -16,6 +16,7 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.7rem;
+  animation: topdown 400ms ease 50ms backwards;
 
   >h2 {
     font-family: "Poppins", sans-serif;

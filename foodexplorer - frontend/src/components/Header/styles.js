@@ -20,6 +20,12 @@ export const Container = styled.header`
     font-size: 2.1rem;
     white-space: nowrap;
 
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red);
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-size: 150% 100%;
+    animation: rainbowText 6s linear 2s infinite;
+
     cursor: pointer;
 
     >svg {

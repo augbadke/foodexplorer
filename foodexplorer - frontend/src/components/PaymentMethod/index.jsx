@@ -25,6 +25,8 @@ export function PaymentMethod({ data, ...rest }) {
   const [cardNumber, setCardNumber] = useState("")
   const [cvc, setCvc] = useState("")
   const [orderStatus, setOrderStatus] = useState("Waiting")
+  const [loading, setLoading] = useState(false)
+
   const socketRef = useRef(null)
 
   const navigate = useNavigate()
@@ -72,11 +74,13 @@ export function PaymentMethod({ data, ...rest }) {
 
   const handlePayment = () => {
 
+    setLoading(true)
     payment().then((response) => {
       if (response.data.status === "Pendente") {
         socketRef.current.emit("newPayment", response.data.orderId)
       }
       setOrderStatus(response.data.status)
+      setLoading(false)
     })
 
   }
@@ -161,7 +165,11 @@ export function PaymentMethod({ data, ...rest }) {
             />
           </div>
         </div>
-        <Button onClick={handlePayment} title="Finalizar pagamento" />
+        <Button 
+          onClick={handlePayment} 
+          title={loading ? "Carregando..." : "Finalizar pagamento"}
+          disabled={loading}
+        />
       </form>}
 
       {orderStatus == "Failed" && <div className="order-status">

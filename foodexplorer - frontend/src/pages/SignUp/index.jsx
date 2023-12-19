@@ -12,6 +12,7 @@ export function SignUp() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
 
@@ -25,6 +26,8 @@ export function SignUp() {
       return alert("A senha deve ter no mínimo 6 caracteres!")
     }
 
+    setLoading(true)
+
     api.post("/users", { name, email, password })
       .then(() => {
         alert("Usuário cadastrado com sucesso!")
@@ -36,6 +39,7 @@ export function SignUp() {
         } else {
           alert("Não foi possível cadastrar")
         }
+        setLoading(false)
       })
   }
 
@@ -69,11 +73,16 @@ export function SignUp() {
           placeholder="No mínimo 6 caracteres"
           type="password"
           minLength={6}
+          autoComplete="off"
           required
           onChange={e => setPassword(e.target.value)}
         />
 
-        <input type="submit" value="Criar conta" />
+        <input 
+          type="submit" 
+          value={loading ? "Carregando..." : "Criar conta"}
+          disabled={loading}
+        />
 
         <Link to="/">Já tenho uma conta</Link>
 

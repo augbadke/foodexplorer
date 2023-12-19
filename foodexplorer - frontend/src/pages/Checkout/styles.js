@@ -13,6 +13,7 @@ export const Container = styled.div`
 
 export const Main = styled.div`
   padding: 5.6rem 3.5rem 4rem;
+  animation: topdown 400ms ease 50ms backwards;
 
   >h2 {
     font-family: "Poppins", sans-serif;
