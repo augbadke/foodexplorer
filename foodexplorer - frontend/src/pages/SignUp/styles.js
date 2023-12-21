@@ -1,15 +1,17 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-  height: 100vh;
-  display: block;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   width: 32rem;
-  margin: 15.8rem auto 0;
+  margin: 0 auto;
 
   >h1 {
     font-size: 3.7rem;
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     display: flex;
+    margin-top: 15.8rem;
     margin-bottom:4rem;
 
     background: linear-gradient(45deg, red, violet, indigo, blue, green, yellow, orange, red);
@@ -26,16 +28,19 @@ export const Container = styled.div`
   }
 
   @media (min-width: ${({ theme }) => theme.MEDIA.SIZE}) {
+    height: 100vh;
     width: 100vw;
     min-height: 65rem;
     margin: 0;
 
     display: flex;
+    flex-direction: row;
     gap: clamp(10rem,15vw,30.6rem);
     align-items: center;
     justify-content: center;
 
     >h1 {
+      margin: 0;
       font-size: 4.2rem;
 
       >svg {

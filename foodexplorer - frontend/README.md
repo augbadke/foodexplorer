@@ -2,6 +2,12 @@
 
 Este projeto é o resultado do desafio final do curso Explorer da Rocketseat. O objetivo era desenvolver um aplicativo para um restaurante, proporcionando aos usuários a capacidade de se cadastrar, realizar pedidos, efetuar pagamentos, acompanhar o status do pedido e adicionar itens aos favoritos. Além disso, permite que um usuário com privilégios de administração cadastre novos itens no cardápio e atualize o status dos pedidos.
 
+Layout da página principal do aplicativo na versão desktop:
+![Home do Food Explorer](https://raw.githubusercontent.com/augbadke/assets/main/foodexplorer1.jpg)
+
+Layout da página principal do aplicativo na versão mobile:
+![Home do Food Explorer](https://raw.githubusercontent.com/augbadke/assets/main/foodexplorer2.jpg)
+
 ## Tecnologias Utilizadas
 
 - [React.js](https://reactjs.org/)
@@ -9,12 +15,6 @@ Este projeto é o resultado do desafio final do curso Explorer da Rocketseat. O 
 - [Axios](https://axios-http.com/)
 - [Styled Components](https://styled-components.com/)
 - [Socket](https://socket.io/)
-
-## Acesso ao Usuário Admin
-
-Para acessar o usuário admin, utilize as seguintes credenciais:
-- **Login:** admin@
-- **Senha:** 123456
 
 ## Como Iniciar o Aplicativo
 
@@ -38,4 +38,17 @@ Para acessar o usuário admin, utilize as seguintes credenciais:
    npm run dev
    ```
 
-O aplicativo estará disponível em http://localhost:5050.
+O aplicativo estará disponível em http://localhost:5500.
+
+## Acesso ao Usuário Admin
+
+Para acessar o usuário admin, utilize as seguintes credenciais:
+- **Login:** admin@
+- **Senha:** 123456
+
+## Para simular pagamentos
+
+Para simular pagamentos bem sucedidos, utilize os seguintes dados do cartão:
+**Número do cartão:** 0000 0000 0000 0000
+**Validade:** 04/25
+**CVC:** 000
