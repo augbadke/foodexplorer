@@ -10,7 +10,7 @@ import { api } from "../../services/api"
 
 import { io } from "socket.io-client"
 
-const ENDPOINT = "http://localhost:3000"
+const ENDPOINT = "https://foodexplorer-api-z598.onrender.com"
 
 export function OrdersHistory() {
   const { isMenuClosed, user } = useAuth()
