@@ -16,7 +16,7 @@ import { api } from "../../services/api"
 
 import { io } from "socket.io-client"
 
-const ENDPOINT = "http://localhost:3000"
+const ENDPOINT = "https://foodexplorer-api-ztsx.onrender.com:3000"
 
 export function PaymentMethod({ data, ...rest }) {
 
