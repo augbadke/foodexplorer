@@ -16,15 +16,15 @@ app.use(express.json())
 app.use(cors())
 app.use(routes)
 
-const { Server } = require("socket.io")
+// const { Server } = require("socket.io")
 
-const io = new Server({
-  cors: {
-    origin: "http://localhost:5500"
-  }
-})
+// const io = new Server({
+//   cors: {
+//     origin: "http://localhost:5500"
+//   }
+// })
 
-io.listen(process.env.WEBSOCKET_PORT)
+// io.listen(process.env.WEBSOCKET_PORT)
 
 // knex("users")
 //   .where({ id: "1" })
@@ -54,31 +54,31 @@ app.use((error, request, response, next) => {
     })
 })
 
-let connectedUsers = {}
+// let connectedUsers = {}
 
-io.on("connection", (socket) => {
+// io.on("connection", (socket) => {
 
-  const userId = socket.handshake.query.userId
+//   const userId = socket.handshake.query.userId
 
-  connectedUsers[userId] = socket
+//   connectedUsers[userId] = socket
 
-  socket.on("statusChange", (orderId, status, userId) => {
-    const data = {orderId, status}
-    if (connectedUsers[userId]) {
-      connectedUsers[userId].emit("statusChange", data)
-    }
-  })
+//   socket.on("statusChange", (orderId, status, userId) => {
+//     const data = {orderId, status}
+//     if (connectedUsers[userId]) {
+//       connectedUsers[userId].emit("statusChange", data)
+//     }
+//   })
 
-  socket.on("newPayment", (orderId) => {
-    if (connectedUsers[1]) { // 1 é o id do usuário que é admin
-      connectedUsers[1].emit("newPayment", orderId)
-    }
-  })
+//   socket.on("newPayment", (orderId) => {
+//     if (connectedUsers[1]) { // 1 é o id do usuário que é admin
+//       connectedUsers[1].emit("newPayment", orderId)
+//     }
+//   })
 
-  socket.on("disconnect", () => {
-    delete connectedUsers[userId]
-  })
-})
+//   socket.on("disconnect", () => {
+//     delete connectedUsers[userId]
+//   })
+// })
 
 const port = process.env.SERVER_PORT
 
