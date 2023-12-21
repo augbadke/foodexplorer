@@ -20,7 +20,7 @@ const { Server } = require("socket.io")
 
 const io = new Server({
   cors: {
-    origin: "https://fdexplorer.netlify.app"
+    origin: "http://localhost:5500"
   }
 })
 
