@@ -14,7 +14,6 @@ Layout da página principal do aplicativo na versão mobile:
 - [Vite](https://vitejs.dev/)
 - [Axios](https://axios-http.com/)
 - [Styled Components](https://styled-components.com/)
-- [Socket](https://socket.io/)
 
 ## Como Iniciar o Aplicativo
 

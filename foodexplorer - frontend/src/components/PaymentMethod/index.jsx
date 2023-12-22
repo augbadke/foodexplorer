@@ -1,7 +1,7 @@
 import { Container } from "./styles"
 
 import { useNavigate } from "react-router-dom"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 
 import { useAuth } from "../../hooks/auth"
 
@@ -14,10 +14,6 @@ import qrCode from "../../assets/qrcode 1.png"
 
 import { api } from "../../services/api"
 
-import { io } from "socket.io-client"
-
-const ENDPOINT = "https://foodexplorer-api-z598.onrender.com"
-
 export function PaymentMethod({ data, ...rest }) {
 
   const [paymentMethod, setPaymentMethod] = useState("pix")
@@ -26,8 +22,6 @@ export function PaymentMethod({ data, ...rest }) {
   const [cvc, setCvc] = useState("")
   const [orderStatus, setOrderStatus] = useState("Waiting")
   const [loading, setLoading] = useState(false)
-
-  const socketRef = useRef(null)
 
   const navigate = useNavigate()
 
@@ -76,9 +70,6 @@ export function PaymentMethod({ data, ...rest }) {
 
     setLoading(true)
     payment().then((response) => {
-      if (response.data.status === "Pendente") {
-        socketRef.current.emit("newPayment", response.data.orderId)
-      }
       setOrderStatus(response.data.status)
       setLoading(false)
     })
@@ -105,16 +96,6 @@ export function PaymentMethod({ data, ...rest }) {
       setTimeout(async () => {
         setOrderStatus("Waiting")
       }, 2000)
-    }
-
-    socketRef.current = io(ENDPOINT, {
-      query: {
-        userId: user.id,
-      },
-    })
-
-    return () => {
-      socketRef.current.disconnect()
     }
 
   }, [orderStatus])

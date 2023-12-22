@@ -1,6 +1,6 @@
 import { Container, Main, Orders, Table } from "./styles"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { useAuth } from "../../../hooks/auth"
 
 import { Header } from "../../../components/admin/Header"
@@ -9,15 +9,9 @@ import { Footer } from "../../../components/Footer"
 
 import { api } from "../../../services/api"
 
-import { io } from "socket.io-client"
-
-const ENDPOINT = "https://foodexplorer-api-z598.onrender.com"
-
 export function OrdersHistory() {
-  const { isMenuClosed, user } = useAuth()
+  const { isMenuClosed } = useAuth()
   const [data, setData] = useState([])
-  const [shouldRerender, setShouldRerender] = useState("")
-  const socketRef = useRef(null)
 
   function formatDate(date) {
     const newDate = new Date(date)
@@ -35,21 +29,7 @@ export function OrdersHistory() {
 
     fetchHistory()
 
-    socketRef.current = io(ENDPOINT, {
-      query: {
-        userId: user.id,
-      },
-    })
-
-    socketRef.current.on("newPayment", (orderId) => {
-      setShouldRerender(orderId)
-    })
-
-    return () => {
-      socketRef.current.disconnect()
-    }
-
-  }, [shouldRerender])
+  }, [])
 
   return (
 

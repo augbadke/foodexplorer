@@ -14,7 +14,6 @@ Este projeto é o resultado do desafio final do curso Explorer da Rocketseat. O 
 - [Nodemon](https://nodemon.io/)
 - [Multer](https://www.npmjs.com/package/multer)
 - [PM2](https://pm2.keymetrics.io/)
-- [Socket](https://socket.io/)
 
 ## Como Iniciar o Aplicativo
 

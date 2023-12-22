@@ -6,7 +6,6 @@ const express = require("express")
 const AppError = require("./utils/AppError")
 const uploadConfig = require("./configs/upload")
 const database = require("./database/sqlite")
-const http = require("http")
 // const knex = require("./database/knex")
 const routes = require("./routes")
 
@@ -16,15 +15,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use(routes)
-
-const { Server } = require("socket.io")
-const server = http.createServer(app)
-
-const io = new Server(server, {
-  cors: {
-    origin: "fdexplorer.netlify.app",
-  },
-})
 
 // knex("users")
 //   .where({ id: "1" })
@@ -54,34 +44,8 @@ app.use((error, request, response, next) => {
     })
 })
 
-let connectedUsers = {}
-
-io.on("connection", (socket) => {
-
-  const userId = socket.handshake.query.userId
-
-  connectedUsers[userId] = socket
-
-  socket.on("statusChange", (orderId, status, userId) => {
-    const data = {orderId, status}
-    if (connectedUsers[userId]) {
-      connectedUsers[userId].emit("statusChange", data)
-    }
-  })
-
-  socket.on("newPayment", (orderId) => {
-    if (connectedUsers[1]) { // 1 é o id do usuário que é admin
-      connectedUsers[1].emit("newPayment", orderId)
-    }
-  })
-
-  socket.on("disconnect", () => {
-    delete connectedUsers[userId]
-  })
-})
-
 const port = process.env.SERVER_PORT
 
-server.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`)
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`)
 })
