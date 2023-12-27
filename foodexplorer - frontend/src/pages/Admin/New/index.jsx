@@ -127,9 +127,12 @@ export function New() {
       tags,
     }
 
-    const response = await api.post("/dishes", requestBody).then(()=>{
-      setLoading(false)
-    }).catch(()=>{
+    const response = await api.post("/dishes", requestBody).catch((error) => {
+      if (error.response) {
+          alert(error.response.data.message)
+      } else {
+          alert("Falha ao criar ítem do cardápio!")
+      }
       setLoading(false)
     })
 
@@ -177,9 +180,12 @@ export function New() {
       requestBody.tags = tags
     }
 
-    await api.put(`/dishes/${params.id}`, requestBody).then(()=>{
-      setLoading(false)
-    }).catch(()=>{
+    await api.put(`/dishes/${params.id}`, requestBody).catch((error) => {
+      if (error.response) {
+          alert(error.response.data.message)
+      } else {
+          alert("Falha ao atualizar ítem do cardápio!")
+      }
       setLoading(false)
     })
 
@@ -198,9 +204,12 @@ export function New() {
     const confirm = window.confirm("O ítem será excluído do cardápio, realmente deseja continuar?")
     if (confirm) {
       setLoading(true)
-      await api.delete(`/dishes/?id=${params.id}&image=${imageName}`).then(()=>{
-        setLoading(false)
-      }).catch(()=>{
+      await api.delete(`/dishes/?id=${params.id}&image=${imageName}`).catch((error) => {
+        if (error.response) {
+            alert(error.response.data.message)
+        } else {
+            alert("Falha ao deletar ítem do cardápio!")
+        }
         setLoading(false)
       })
       navigate("/")
