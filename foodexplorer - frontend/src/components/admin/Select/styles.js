@@ -24,7 +24,7 @@ export const Container = styled.div`
     width: 2.4rem;
     height: 2.4rem;
 
-    background-image: url("/src/assets/vector.svg");
+    background-image: url("./src/assets/vector.svg");
     background-repeat: no-repeat;
     background-position: center;
     pointer-events: none;
