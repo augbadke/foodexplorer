@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import imgUrl from "/src/assets/vector.svg"
 
 export const Container = styled.div`
   position: relative;
@@ -24,7 +25,7 @@ export const Container = styled.div`
     width: 2.4rem;
     height: 2.4rem;
 
-    background-image: url("./src/assets/vector.svg");
+    background-image: url(${imgUrl});
     background-repeat: no-repeat;
     background-position: center;
     pointer-events: none;
