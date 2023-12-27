@@ -8,7 +8,6 @@ Layout da página principal do aplicativo na versão desktop:
 ![Home do Food Explorer](https://raw.githubusercontent.com/augbadke/assets/main/foodexplorer1.jpg)
 
 Layout da página principal do aplicativo na versão mobile:
-
 ![Home do Food Explorer](https://raw.githubusercontent.com/augbadke/assets/main/foodexplorer2.jpg)
 
 ## Tecnologias Utilizadas
