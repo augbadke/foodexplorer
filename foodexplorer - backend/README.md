@@ -2,6 +2,8 @@
 
 Este projeto é o resultado do desafio final do curso Explorer da Rocketseat. O objetivo era desenvolver um aplicativo para um restaurante, proporcionando aos usuários a capacidade de se cadastrar, realizar pedidos, efetuar pagamentos, acompanhar o status do pedido e adicionar itens aos favoritos. Além disso, permite que um usuário com privilégios de administração cadastre novos itens no cardápio e atualize o status dos pedidos.
 
+O resultado pode ser visto em: https://fdexplorer.netlify.app/
+
 ## Tecnologias Utilizadas
 
 - [Node.js](https://nodejs.org/)
@@ -19,7 +21,7 @@ Este projeto é o resultado do desafio final do curso Explorer da Rocketseat. O 
 
 1. **Navegue até o diretório backend:**
    ```bash
-   cd foodexplorer/backend
+   cd foodexplorer/foodexplorer - backend
    ```
 
 2. **Instale as dependências:**

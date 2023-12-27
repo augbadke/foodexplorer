@@ -4,7 +4,7 @@ import React, { useState } from "react"
 
 import { api } from "../../../services/api"
 
-export function Select ({ defaultValue, orderId, socket, userId }) {
+export function Select ({ defaultValue, orderId }) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedStatus, setSelectedStatus] = useState(defaultValue)
 
@@ -21,7 +21,6 @@ export function Select ({ defaultValue, orderId, socket, userId }) {
   const handleStatusChange = (status) => {
 
     updateStatus(status).then(() => {
-      socket.emit("statusChange", orderId, status, userId)
       setSelectedStatus(status)
       setHighlightedIndex(statusIndexMap[status])
       setIsOpen(false)

@@ -2,6 +2,8 @@
 
 Este projeto é o resultado do desafio final do curso Explorer da Rocketseat. O objetivo era desenvolver um aplicativo para um restaurante, proporcionando aos usuários a capacidade de se cadastrar, realizar pedidos, efetuar pagamentos, acompanhar o status do pedido e adicionar itens aos favoritos. Além disso, permite que um usuário com privilégios de administração cadastre novos itens no cardápio e atualize o status dos pedidos.
 
+O resultado pode ser visto em: https://fdexplorer.netlify.app/
+
 Layout da página principal do aplicativo na versão desktop:
 ![Home do Food Explorer](https://raw.githubusercontent.com/augbadke/assets/main/foodexplorer1.jpg)
 
@@ -24,7 +26,7 @@ Layout da página principal do aplicativo na versão mobile:
 
 2. **Navegue até o diretório frontend:**
    ```bash
-   cd foodexplorer/frontend
+   cd foodexplorer/foodexplorer - frontend
    ```
 
 3. **Instale as dependências:**

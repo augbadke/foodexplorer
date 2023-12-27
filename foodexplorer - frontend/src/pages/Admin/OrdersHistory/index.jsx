@@ -50,7 +50,7 @@ export function OrdersHistory() {
                 <p>{formatDate(item.created_at)}</p>
               </div>
               <p>{item.orders}</p>
-              <Select defaultValue={item.status} orderId={item.id} socket={socketRef.current} userId={item.user_id} />
+              <Select defaultValue={item.status} orderId={item.id} userId={item.user_id} />
             </Orders>
           ))
         }
@@ -69,7 +69,7 @@ export function OrdersHistory() {
             {data.map((item) => (
               <tr key={item.id}>
                 <td>
-                  <Select defaultValue={item.status} orderId={item.id} socket={socketRef.current} userId={item.user_id} />
+                  <Select defaultValue={item.status} orderId={item.id} userId={item.user_id} />
                 </td>
                 <td>{item.id.toString().padStart(6, "0")}</td>
                 <td>{item.orders}</td>
