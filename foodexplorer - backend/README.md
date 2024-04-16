@@ -1,10 +1,10 @@
 # Food Explorer - Backend
 
-Este projeto é o resultado do desafio final do curso Explorer da Rocketseat. O objetivo era desenvolver um aplicativo para um restaurante, proporcionando aos usuários a capacidade de se cadastrar, realizar pedidos, efetuar pagamentos, acompanhar o status do pedido e adicionar itens aos favoritos. Além disso, permite que um usuário com privilégios de administração cadastre novos itens no cardápio e atualize o status dos pedidos.
+This project is the result of the final challenge of Rocketseat's Explorer course. The goal was to develop an application for a restaurant, providing users with the ability to register, place orders, make payments, track order status, and add items to favorites. Additionally, it allows a user with administrative privileges to add new items to the menu and update the status of orders.
 
-O resultado pode ser visto em: https://fdexplorer.netlify.app/
+The result can be seen at: https://fdexplorer.netlify.app/
 
-## Tecnologias Utilizadas
+## Technologies Used
 
 - [Node.js](https://nodejs.org/)
 - [Express](https://expressjs.com/)
@@ -17,21 +17,21 @@ O resultado pode ser visto em: https://fdexplorer.netlify.app/
 - [Multer](https://www.npmjs.com/package/multer)
 - [PM2](https://pm2.keymetrics.io/)
 
-## Como Iniciar o Aplicativo
+## How to Start the Application
 
-1. **Navegue até o diretório backend:**
+1. **Navigate to the backend directory:**
    ```bash
    cd foodexplorer/foodexplorer - backend
    ```
 
-2. **Instale as dependências:**
+2. **Install the dependencies:**
    ```bash
    npm install
    ```
 
-3. **Inicie o aplicativo:**
+3. **Start the application:**
    ```bash
    npm run dev
    ```
 
-4. **Crie uma arquivo .env contendo as variáveis de ambiente mostradas no arquivo .env.example e atribua valores a essas variáveis.**
+4. **Create a .env file containing the environment variables shown in the .env.example file and assign values to these variables.**

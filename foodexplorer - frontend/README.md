@@ -1,56 +1,56 @@
 # Food Explorer - Frontend
 
-Este projeto é o resultado do desafio final do curso Explorer da Rocketseat. O objetivo era desenvolver um aplicativo para um restaurante, proporcionando aos usuários a capacidade de se cadastrar, realizar pedidos, efetuar pagamentos, acompanhar o status do pedido e adicionar itens aos favoritos. Além disso, permite que um usuário com privilégios de administração cadastre novos itens no cardápio e atualize o status dos pedidos.
+This project is the result of the final challenge of Rocketseat's Explorer course. The goal was to develop an application for a restaurant, providing users with the ability to register, place orders, make payments, track order status, and add items to favorites. Additionally, it allows a user with administrative privileges to add new items to the menu and update the status of orders.
 
-O resultado pode ser visto em: https://fdexplorer.netlify.app/
+The result can be seen at: https://fdexplorer.netlify.app/
 
-Layout da página principal do aplicativo na versão desktop:
-![Home do Food Explorer](https://raw.githubusercontent.com/augbadke/assets/main/foodexplorer1.jpg)
+Layout of the main page of the application in the desktop version:
+![Food Explorer Home](https://raw.githubusercontent.com/augbadke/assets/main/foodexplorer1.jpg)
 
-Layout da página principal do aplicativo na versão mobile:
+Layout of the main page of the application in the mobile version:
 
-![Home do Food Explorer](https://raw.githubusercontent.com/augbadke/assets/main/foodexplorer2.jpg)
+![Food Explorer Home](https://raw.githubusercontent.com/augbadke/assets/main/foodexplorer2.jpg)
 
-## Tecnologias Utilizadas
+## Technologies Used
 
 - [React.js](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
 - [Axios](https://axios-http.com/)
 - [Styled Components](https://styled-components.com/)
 
-## Como Iniciar o Aplicativo
+## How to Start the Application
 
-1. **Clone o repositório para o seu computador:**
+1. **Clone the repository to your computer:**
    ```bash
    git clone https://github.com/augbadke/foodexplorer
    ```
 
-2. **Navegue até o diretório frontend:**
+2. **Navigate to the frontend directory:**
    ```bash
    cd foodexplorer/foodexplorer - frontend
    ```
 
-3. **Instale as dependências:**
+3. **Install the dependencies:**
    ```bash
    npm install
    ```
 
-4. **Inicie o aplicativo:**
+4. **Start the application:**
    ```bash
    npm run dev
    ```
 
-O aplicativo estará disponível em http://localhost:5500.
+The application will be available at http://localhost:5500.
 
-## Acesso ao Usuário Admin
+## Admin User Access
 
-Para acessar o usuário admin, utilize as seguintes credenciais:
-- **Login:** admin@
-- **Senha:** 123456
+To access the admin user, use the following credentials:
+- **Username:** admin@
+- **Password:** 123456
 
-## Para simular pagamentos
+## To simulate payments
 
-Para simular pagamentos bem sucedidos, utilize os seguintes dados do cartão:
-**Número do cartão:** 0000 0000 0000 0000
-**Validade:** 04/25
+To simulate successful payments, use the following card details:
+**Card Number:** 0000 0000 0000 0000
+**Expiration Date:** 04/25
 **CVC:** 000
